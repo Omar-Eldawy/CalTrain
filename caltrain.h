@@ -2,11 +2,10 @@
 
 struct station {
 	int waiting_passengers;
-    int valid_seats;
+    int passengers_on_board;
     int empty_seats;
     pthread_mutex_t lock;
     pthread_cond_t available_train;
-    pthread_cond_t available_seat;
     pthread_cond_t train_can_go;
 };
 
