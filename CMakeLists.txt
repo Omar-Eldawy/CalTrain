@@ -4,4 +4,5 @@ project(CalTrain C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(CalTrain
-        Makefile.c)
+        caltrain-runner.c
+        caltrain.c)
