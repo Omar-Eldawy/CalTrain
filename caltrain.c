@@ -20,11 +20,11 @@ station_load_train(struct station *station, int count) {
         if (count && station->waiting_passengers) {
             station->empty_seats = count;
 
-            //while loop to avoid spurious wakeup
-            while (station->empty_seats && station->waiting_passengers) {
-                //wake up all passengers waiting for the train
-                pthread_cond_broadcast(&station->available_train);
+            //wake up all passengers waiting for the train
+            pthread_cond_broadcast(&station->available_train);
 
+            //while loop to handle spurious wakeup
+            while (station->empty_seats && station->waiting_passengers) {
                 //wait for all passengers to board the train
                 pthread_cond_wait(&station->train_can_go, &station->lock);
             }
